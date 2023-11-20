@@ -1,17 +1,18 @@
 import { useState, useCallback, useRef, useEffect } from "react"
 import { debounce } from 'radash'
+import { getItem, setItem } from "@/utils/storage"
 
 const useExcalidraw = () => {
 	// state
-	const saveNotes = JSON.parse(localStorage.getItem('notes')) || []
-	const [notes, setNotes] = useState(saveNotes)
+	const saveNotes = getItem('notes') || []
+	const [notes, setNotes] = useState(saveNotes) 
 	const [currentNoteIndex, setCurrentNoteIndex] = useState(0)
 	const currrentNoteData = notes[currentNoteIndex]
 	const excalidrawRef = useRef()
 
 	// storage part
 	useEffect(() => {
-		localStorage.setItem('notes',JSON.stringify(notes))
+		setItem('notes',notes)
 	}, [notes])
 	
 
