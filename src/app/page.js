@@ -1,7 +1,7 @@
 'use client'
 
 import LazyExcalidraw from "@/components/lazy_excalidraw"
-import NoteItem from "@/components/note_iem"
+import NoteItem from "@/components/note_item"
 import NoteLayout from "@/components/note_layout"
 import useExcalidraw from "@/hooks/use_excalidraw"
 
@@ -22,9 +22,9 @@ export default function Home() {
 		<main className='h-screen flex flex-row'>
 			<NoteLayout>
 				<button
-					className="hover:bg-slate-200 rounded-md m-4 p-4"
+					className="rounded-md m-4 p-4 shadow-md hover:bg-slate-50 text-purple-500"
 					onClick={addNote}
-				>새 노트 만들기</button>
+				>새 노트</button>
 				{
 					notes.map((note, index) => (
 						<NoteItem

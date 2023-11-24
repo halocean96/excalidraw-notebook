@@ -12,7 +12,9 @@ const LazyExcalidraw = forwardRef(({fallback, isShow,...props}, ref) => {
 	}, [isShow])
 	if(!isShow) {
 		return (
-			<p className='text-center align-middle'>노트를 선택해주세요.</p>
+			<div className='flex items-center justify-center text-gray-500'>
+				<p>노트를 선택해주세요.</p>
+			</div>
 		)
 	}
 	return (
