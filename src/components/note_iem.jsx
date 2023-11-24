@@ -4,7 +4,7 @@ import RemoveItem from "@/icons/remove"
 const NoteItem = ({title, isFocused, onSelect, onEdit, onRemove}) => {
 	return (
 		<li
-			className={`p-2 ${isFocused ? ' font-semi-bold' : 'font-light opacity-50'} relative text-purple-600`}
+			className={`p-2 ${isFocused ? ' font-semi-bold' : 'font-light opacity-50'} relative text-purple-600 hover:bg-slate-50 cursor-pointer`}
 			onClick={onSelect}
 		>
 			<span>{title}</span>
