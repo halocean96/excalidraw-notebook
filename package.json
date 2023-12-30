@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@excalidraw/excalidraw": "^0.16.1",
+    "nanoid": "^5.0.4",
     "next": "14.0.2",
     "radash": "^11.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

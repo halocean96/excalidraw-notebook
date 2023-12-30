@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react"
 import { debounce } from 'radash'
 import { getItem, setItem } from "@/utils/storage"
+import { nanoid } from "nanoid"
 
 const useExcalidraw = () => {
 	// state
@@ -48,7 +49,7 @@ const useExcalidraw = () => {
 	const addNote = () => {
 		setNotes(prevNotes => {
 			const newNote = {
-				id: prevNotes.length + 1,
+				id: nanoid(10),
 				title: '제목 없음',
 				content: [],
 			}
