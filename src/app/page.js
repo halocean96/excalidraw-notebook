@@ -4,8 +4,11 @@ import LazyExcalidraw from "@/components/lazy_excalidraw"
 import NoteItem from "@/components/note_item"
 import NoteLayout from "@/components/note_layout"
 import useExcalidraw from "@/hooks/use_excalidraw"
+import RemoveModal from "@/components/modal/remove-modal"
+import { removeModalAtom } from "@/states/removeModal"
+import { useSetRecoilState, RecoilRoot } from "recoil"
 
-export default function Home() {
+function Home() {
 	const {
 		notes,
 		excalidrawRef,
@@ -17,7 +20,14 @@ export default function Home() {
 		currentNoteIndex,
 		currrentNoteData
 	} = useExcalidraw()
-
+	
+	const setIsOpenRemoveModal = useSetRecoilState(removeModalAtom)
+	const openRemoveModal = (id) => {
+		setIsOpenRemoveModal({
+			isOpen: true,
+			onRemove: () => removeNote(id),
+		})
+	}
 	return (
 		<main className='h-screen flex flex-row'>
 			<NoteLayout>
@@ -32,7 +42,7 @@ export default function Home() {
 							title={note.title}
 							onSelect={() => focusNote(index)}
 							onEdit={() => editNote(note.id)}
-							onRemove={() => removeNote(note.id)}
+							onRemove={() => openRemoveModal(note.id)}
 							isFocused={index === currentNoteIndex}
 						/>
 					))
@@ -48,6 +58,11 @@ export default function Home() {
 					isShow={notes.length}
 				/>
 			</section>
+			<RemoveModal />
 		</main>
 	)
 }
+
+const HomeWithRecoil = () => <RecoilRoot><Home/></RecoilRoot>;
+
+export default HomeWithRecoil;
