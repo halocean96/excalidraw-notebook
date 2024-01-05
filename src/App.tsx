@@ -1,10 +1,10 @@
-import { Flex, Text, Button } from '@radix-ui/themes';
+import { Flex } from '@radix-ui/themes';
+import { Excalidraw } from '@excalidraw/excalidraw';
 
 function App() {
 	return (
-		<Flex direction="column" gap="2">
-			<Text>Hello from Radix Themes :)</Text>
-			<Button>Let's go</Button>
+		<Flex direction={'row'} className="h-screen">
+			<Excalidraw />
 		</Flex>
 	);
 }
