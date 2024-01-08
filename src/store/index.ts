@@ -16,7 +16,8 @@ interface NoteState {
 	currentId: Note['id'] | undefined;
 	excalidrawApi: ExcalidrawImperativeAPI | undefined;
 	setExcalidrawApi: (api: ExcalidrawImperativeAPI) => void;
-	selectNote: (id: Note['id']) => void;
+	selectNote: (id?: Note['id']) => void;
+	removeNote: (id: Note['id']) => void;
 	onNoteChange: (note: Note['data']) => void;
 }
 
@@ -57,6 +58,13 @@ export const useNoteStore = create<NoteState>()(
 				if (targetNote && excalidrawApi) {
 					excalidrawApi.updateScene({ elements: targetNote.data });
 				}
+			},
+			removeNote: (id) => {
+				const { selectNote } = get();
+				set((state) => ({
+					noteList: state.noteList.filter((note) => note.id !== id)
+				}));
+				selectNote();
 			},
 			setExcalidrawApi: (api) => {
 				set((state) => ({ ...state, excalidrawApi: api }));
