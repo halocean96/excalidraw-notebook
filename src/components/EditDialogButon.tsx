@@ -3,10 +3,14 @@ import { Pencil2Icon } from '@radix-ui/react-icons';
 import { useRef } from 'react';
 
 type EditDialogButtonProps = {
+	initialTitle: string;
 	editNote: (title: string) => void;
 };
 
-const EditDialogButton = ({ editNote }: EditDialogButtonProps) => {
+const EditDialogButton = ({
+	initialTitle,
+	editNote
+}: EditDialogButtonProps) => {
 	const newTitleInputRef = useRef<HTMLInputElement>(null);
 	const handleEditNote = () => {
 		if (newTitleInputRef.current && newTitleInputRef.current.value) {
@@ -29,7 +33,7 @@ const EditDialogButton = ({ editNote }: EditDialogButtonProps) => {
 				<Flex direction="column" gap="3">
 					<TextField.Input
 						ref={newTitleInputRef}
-						defaultValue=""
+						defaultValue={initialTitle}
 						placeholder="공백을 제외하고 입력해주세요."
 					/>
 				</Flex>

@@ -15,7 +15,10 @@ const Note = ({ title, onSelect, onRemove, onEditTitle }: NoteProps) => {
 			<Flex className="w-44" align={'center'} justify={'between'}>
 				<Text className="w-40 line-clamp-1">{title}</Text>
 				<Flex gap={'2'}>
-					<EditDialogButton editNote={onEditTitle} />
+					<EditDialogButton
+						initialTitle={title}
+						editNote={onEditTitle}
+					/>
 					<RemoveDialogButton removeNote={onRemove} />
 				</Flex>
 			</Flex>
