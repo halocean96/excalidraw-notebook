@@ -9,9 +9,21 @@ type NoteProps = {
 	isCurrent: boolean;
 };
 
-const Note = ({ title, onSelect, onRemove, onEditTitle }: NoteProps) => {
+const Note = ({
+	title,
+	onSelect,
+	onRemove,
+	onEditTitle,
+	isCurrent
+}: NoteProps) => {
 	return (
-		<Card onClick={onSelect} size="2" color="red">
+		// FIXME:  isCurrent ? 'border-purple-900' : '' 스타일 적용 안됨
+		<Card
+			onClick={onSelect}
+			className={`border-2 hover:border-purple-600 hover:cursor-pointer ${
+				isCurrent ? 'border-purple-900' : ''
+			}`}
+		>
 			<Flex className="w-44" align={'center'} justify={'between'}>
 				<Text className="w-40 line-clamp-1">{title}</Text>
 				<Flex gap={'2'}>

@@ -20,7 +20,7 @@ const EditDialogButton = ({
 	return (
 		<Dialog.Root>
 			<Dialog.Trigger>
-				<IconButton variant="outline">
+				<IconButton className="hover:cursor-pointer" variant="outline">
 					<Pencil2Icon />
 				</IconButton>
 			</Dialog.Trigger>
