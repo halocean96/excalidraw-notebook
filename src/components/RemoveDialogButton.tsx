@@ -30,7 +30,12 @@ const RemoveDialogButton = ({ removeNote }: RemoveDialogButtonProps) => {
 						</Button>
 					</AlertDialog.Cancel>
 					<AlertDialog.Action>
-						<Button variant="soft" color="red" onClick={removeNote}>
+						<Button
+							autoFocus
+							variant="soft"
+							color="red"
+							onClick={removeNote}
+						>
 							삭제
 						</Button>
 					</AlertDialog.Action>

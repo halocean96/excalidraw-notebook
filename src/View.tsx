@@ -4,14 +4,21 @@ import Note from './components/Note';
 import Divider from './components/Divider';
 
 function View() {
-	const { addNote, noteList, selectNote, removeNote, currentId } =
-		useNoteStore((state) => ({
-			addNote: state.addNote,
-			noteList: state.noteList,
-			selectNote: state.selectNote,
-			removeNote: state.removeNote,
-			currentId: state.currentId
-		}));
+	const {
+		addNote,
+		noteList,
+		selectNote,
+		removeNote,
+		editNoteTitle,
+		currentId
+	} = useNoteStore((state) => ({
+		addNote: state.addNote,
+		noteList: state.noteList,
+		selectNote: state.selectNote,
+		removeNote: state.removeNote,
+		editNoteTitle: state.editNoteTitle,
+		currentId: state.currentId
+	}));
 	return (
 		<Flex direction={'column'} px={'2'}>
 			<Container grow={'0'} py="2">
@@ -33,6 +40,7 @@ function View() {
 						title={note.title}
 						onSelect={() => selectNote(note.id)}
 						onRemove={() => removeNote(note.id)}
+						onEditTitle={(title) => editNoteTitle(note.id, title)}
 						isCurrent={note.id === currentId}
 					/>
 				))}

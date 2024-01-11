@@ -18,6 +18,7 @@ interface NoteState {
 	setExcalidrawApi: (api: ExcalidrawImperativeAPI) => void;
 	selectNote: (id?: Note['id']) => void;
 	removeNote: (id: Note['id']) => void;
+	editNoteTitle: (id: Note['id'], title: string) => void;
 	onNoteChange: (note: Note['data']) => void;
 }
 
@@ -65,6 +66,13 @@ export const useNoteStore = create<NoteState>()(
 					noteList: state.noteList.filter((note) => note.id !== id)
 				}));
 				selectNote();
+			},
+			editNoteTitle: (id, title) => {
+				set((state) => ({
+					noteList: state.noteList.map((note) =>
+						note.id === id ? { ...note, title } : note
+					)
+				}));
 			},
 			setExcalidrawApi: (api) => {
 				set((state) => ({ ...state, excalidrawApi: api }));
