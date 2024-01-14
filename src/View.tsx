@@ -21,7 +21,7 @@ function View() {
 		currentId: state.currentId
 	}));
 	return (
-		<Flex direction={'column'} px={'2'}>
+		<Flex className=" min-w-48" direction={'column'} px={'2'}>
 			<Container grow={'0'} py="2">
 				<CreateDialogButton createNote={(title) => addNote(title)} />
 			</Container>

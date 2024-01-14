@@ -1,4 +1,4 @@
-import { Card, Text, Flex } from '@radix-ui/themes';
+import { Box, Text, Flex } from '@radix-ui/themes';
 import RemoveDialogButton from './RemoveDialogButton';
 import EditDialogButton from './EditDialogButon';
 type NoteProps = {
@@ -17,11 +17,10 @@ const Note = ({
 	isCurrent
 }: NoteProps) => {
 	return (
-		// FIXME:  isCurrent ? 'border-purple-900' : '' 스타일 적용 안됨
-		<Card
+		<Box
 			onClick={onSelect}
-			className={`border-2 hover:border-purple-600 hover:cursor-pointer ${
-				isCurrent ? 'border-purple-900' : ''
+			className={`p-4 border-2 rounded-lg hover:bg-slate-100 hover:border-purple-600 hover:cursor-pointer ${
+				isCurrent ? 'bg-slate-100 border-purple-600' : ''
 			}`}
 		>
 			<Flex className="w-44" align={'center'} justify={'between'}>
@@ -34,7 +33,7 @@ const Note = ({
 					<RemoveDialogButton removeNote={onRemove} />
 				</Flex>
 			</Flex>
-		</Card>
+		</Box>
 	);
 };
 
