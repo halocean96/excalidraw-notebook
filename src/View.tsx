@@ -1,7 +1,8 @@
-import { Button, Container, Flex } from '@radix-ui/themes';
+import { Container, Flex } from '@radix-ui/themes';
 import { useNoteStore } from './store';
 import Note from './components/Note';
 import Divider from './components/Divider';
+import CreateDialogButton from './components/CreateDialogButton';
 
 function View() {
 	const {
@@ -22,9 +23,7 @@ function View() {
 	return (
 		<Flex direction={'column'} px={'2'}>
 			<Container grow={'0'} py="2">
-				<Button className="w-full" onClick={() => addNote('new')}>
-					New
-				</Button>
+				<CreateDialogButton createNote={(title) => addNote(title)} />
 			</Container>
 			<Divider />
 			<Flex
