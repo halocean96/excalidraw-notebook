@@ -12,7 +12,7 @@ function App() {
 	}));
 
 	const onChangeThrottle = useCallback(
-		throttle({ interval: 1000 }, onNoteChange),
+		throttle({ interval: 500 }, onNoteChange),
 		[onNoteChange]
 	);
 	return (

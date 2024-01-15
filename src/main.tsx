@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<Theme accentColor="violet" grayColor="sand">
 			<App />
-			<ThemePanel />
+			{import.meta.env.DEV ? <ThemePanel /> : null}
 		</Theme>
 	</React.StrictMode>
 );
