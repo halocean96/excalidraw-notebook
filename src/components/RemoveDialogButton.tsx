@@ -34,7 +34,10 @@ const RemoveDialogButton = ({ removeNote }: RemoveDialogButtonProps) => {
 							autoFocus
 							variant="soft"
 							color="red"
-							onClick={removeNote}
+							onClick={(e) => {
+								e.stopPropagation();
+								removeNote();
+							}}
 						>
 							삭제
 						</Button>

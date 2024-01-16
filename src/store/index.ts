@@ -3,7 +3,7 @@ import { ExcalidrawImperativeAPI } from '@excalidraw/excalidraw/types/types';
 import { ImportedDataState } from '@excalidraw/excalidraw/types/data/types';
 import { nanoid } from 'nanoid';
 import { persist } from 'zustand/middleware';
-
+import { last } from 'radash';
 export interface Note {
 	id: string;
 	title: string;
@@ -13,8 +13,8 @@ export interface Note {
 interface NoteState {
 	noteList: Note[];
 	addNote: (title: string) => void;
-	currentId: Note['id'] | undefined;
-	excalidrawApi: ExcalidrawImperativeAPI | undefined;
+	currentId?: Note['id'];
+	excalidrawApi?: ExcalidrawImperativeAPI;
 	setExcalidrawApi: (api: ExcalidrawImperativeAPI) => void;
 	selectNote: (id?: Note['id']) => void;
 	removeNote: (id: Note['id']) => void;
@@ -61,11 +61,12 @@ export const useNoteStore = create<NoteState>()(
 				}
 			},
 			removeNote: (id) => {
-				const { selectNote } = get();
 				set((state) => ({
 					noteList: state.noteList.filter((note) => note.id !== id)
 				}));
-				selectNote();
+				const { noteList, selectNote } = get();
+				const nextNoteId = last(noteList)?.id;
+				selectNote(nextNoteId);
 			},
 			editNoteTitle: (id, title) => {
 				set((state) => ({
