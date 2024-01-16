@@ -23,7 +23,7 @@ const Note = ({
 				isCurrent ? 'bg-slate-100 border-purple-600' : ''
 			}`}
 		>
-			<Flex className="w-44" align={'center'} justify={'between'}>
+			<Flex className="w-full" align={'center'} justify={'between'}>
 				<Text className="w-40 line-clamp-1">{title}</Text>
 				<Flex gap={'2'}>
 					<EditDialogButton
