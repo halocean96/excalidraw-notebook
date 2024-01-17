@@ -24,7 +24,7 @@ function App() {
 	const initialElements =
 		noteList.find((note) => note.id === currentId)?.data ?? [];
 	return (
-		<Flex direction={'row'} className="w-screen h-screen">
+		<Flex direction={'row'} className="w-screen h-full overflow-hidden">
 			<Box className="grow max-w-64 hidden lg:block">
 				<View />
 			</Box>

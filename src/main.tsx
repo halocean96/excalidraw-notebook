@@ -7,7 +7,7 @@ import '@radix-ui/themes/styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<Theme accentColor="violet" grayColor="sand">
+		<Theme className="h-full" accentColor="violet" grayColor="sand">
 			<App />
 		</Theme>
 	</React.StrictMode>
